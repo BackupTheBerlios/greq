@@ -2,7 +2,9 @@
 bin_PROGRAMS = greq
 greq_SOURCES = greq.c check_button.c entry_field.c okay_cancel.c\
 	       option_menu.c greq.h
-LDFLAGS = `gtk-config --libs`
-CFLAGS += `gtk-config --cflags`
-MOSTLYCLEANFILES= *~
+MOSTLYCLEANFILES= *~ *.s
 MAINTAINERCLEANFILES = Makefile.in stamp-h.in
+CFLAGS += $(GTK_CFLAGS)
+LDFLAGS += $(GTK_LIBS)
+%.s: %.c
+	$(COMPILE) -S $<
