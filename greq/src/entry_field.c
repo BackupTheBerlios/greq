@@ -48,5 +48,6 @@ void last_entry_default (gchar *text)
 
 inline void output_entry (GtkWidget *entry)
 {
-   puts(gtk_entry_get_text((GtkEntry *)entry));
+   fputs(gtk_entry_get_text((GtkEntry *)entry), stdout);
+   putchar(FIELD_SEPARATOR);
 }

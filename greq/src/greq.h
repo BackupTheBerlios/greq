@@ -33,6 +33,7 @@ enum
    char* key_press_event = "key_press_event";
 #else
    #define global extern
+   #define FIELD_SEPARATOR '\a'
    extern char* key_press_event;
 #endif
 

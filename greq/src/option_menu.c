@@ -61,6 +61,7 @@ void output_option_menu(GtkWidget *om)
    Debug("c = %#x : %s\n", (unsigned int)c, GTK_IS_LABEL(c) ? "OK" : "ERROR" );
    if (c) {
       gtk_label_get((GtkLabel *)c, &text);
-      puts(text);
+      fputs(text, stdout);
+      putchar(FIELD_SEPARATOR);
    }
 }

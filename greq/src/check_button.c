@@ -20,9 +20,13 @@ void create_check_button(gchar *label, gboolean toggled)
 
 inline void output_check_button(GtkWidget *w)
 {
+   char *out;
+   
    if (gtk_toggle_button_get_active((GtkToggleButton*)w)) {
-      puts("TRUE");
+      out="TRUE";
    } else {
-      puts("FALSE");
+      out="FALSE";
    }
+   fputs(out, stdout);
+   putchar(FIELD_SEPARATOR);
 }
