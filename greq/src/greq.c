@@ -124,11 +124,13 @@ int main (int argc, char *argv[])
    create_ok_button(ok_label);
    if(cancel_label != (gchar *)win)
      create_cancel_button(cancel_label);
-   
+
+#if GTK_MAJOR_VERSION < 2
    if(widgets) {
       Debug ("Setting focus\n");
       gtk_widget_grab_focus((GtkWidget *) widgets->data);
    };
+#endif
    
    gtk_widget_show_all (win);
    gtk_main();
