@@ -102,6 +102,7 @@ int main (int argc, char *argv[])
 	     break;
 	   case '?':
 	   case 'h':
+	     fputs(GREQ_VERSION, stderr);
 	     fprintf(stderr,"Usage: %s [-t<window-title>] [-p<text-prompt>] [[-(e | E)[<entry-label>] [-d<default-value>]] [-(c | C)<checkbox-label>] [-m<menu-label> <menu-item> ...] [-o<ok-label>] [-a[<abort-label>]]\n", argv[0]);
 	     quit(RETURN_ERROR_ARG);
 	  }
