@@ -1,7 +1,34 @@
-Basic Installation
-==================
+Greq Installation Manual
+========================
 
-   These are generic installation instructions.
+There are two stages to the building and installation of Greq:
+
+	1. creating the configuration scripts,
+	2. normal configuration, compilation and installation.
+	
+However, you only have to do the first step yourself, if you got Greq
+directly from the CVS repository at cvs.greq.berlios.de:/cvsroot/greq. If
+you got the sources in a tarball (called something like greq-0.9.3.tar.gz)
+the configuration infrastructure is already set up for you and you can skip
+to the normal installation procedure below.
+
+
+Creating the Configuration Scripts
+==================================
+
+If you got your sources directly from the CVS repository, you need to create
+the `configure' script before you can configure Greq for your computer. To
+do that simply run the `autogen.sh' shell script which is contained in the
+main directory. This script will run all the necessary programs to create
+the `configure' script. Please note that you will need to have installed
+GNU autoconf and automake to be able to run this script.
+
+If you get syntax errors when running the configure script because of
+unexpected tokens like AM_PATH_GLIB_2_0, then copy the corresponding .m4
+files from ac/missing/ into ac/ and rerun `autogen.sh'.
+
+Normal Installation
+===================
 
    The `configure' shell script attempts to guess correct values for
 various system-dependent variables used during compilation.  It uses
@@ -107,17 +134,15 @@ option `--program-prefix=PREFIX' or `--program-suffix=SUFFIX'.
 Optional Features
 =================
 
-   Some packages pay attention to `--enable-FEATURE' options to
-`configure', where FEATURE indicates an optional part of the package.
-They may also pay attention to `--with-PACKAGE' options, where PACKAGE
-is something like `gnu-as' or `x' (for the X Window System).  The
-`README' should mention any `--enable-' and `--with-' options that the
-package recognizes.
+   Greq can be compiled with versions 1.2 and 2.0 of the gtk+ and glib
+libraries. By default the configure script will check for the newest version
+which is installed and compile against that version. If you have installed
+both versions of gtk+ but want to have Greq compiled against version 1.2,
+you can specify that by using the `configure' option `--with-gtk=1.2'.
 
-   For packages that use the X Window System, `configure' can usually
-find the X include and library files automatically, but if it doesn't,
-you can use the `configure' options `--x-includes=DIR' and
-`--x-libraries=DIR' to specify their locations.
+   `configure' can usually find the X include and library files
+automatically, but if it doesn't, you can use the `configure' options
+`--x-includes=DIR' and `--x-libraries=DIR' to specify their locations.
 
 Specifying the System Type
 ==========================
