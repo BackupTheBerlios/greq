@@ -1,5 +1,5 @@
 #!/bin/bash
-PATH=$PATH:./src
+PATH=./src:$PATH
 GREQ=`which greq 2>/dev/null`
 if [ -z $GREQ ]; then
   echo "Couldn't find the greq executable. Maybe you should make it first?"
