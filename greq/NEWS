@@ -1,2 +1,7 @@
-0.9.0
-     initial public release
+0.9.1
+     !!!!!ATTENTION!!!!
+     Because bash collapses all occurrences of IFS whitespace, the output
+     format of greq has changed in this version to use '\a' as its IFS.
+     This means that all scripts that rely on prior versions will have to
+     be changed. Fortunately, as this is only the second public release,
+     I hope that the breakage will not be too bad ;-)
