@@ -25,19 +25,25 @@ window is decided by the window manager.
 Adds a paragraph of text to the requester. The text will be broken
 into lines automatically, which will be centered.
 
-.IP -e/E
+.IP -e/E 
 Adds a text entry field. This option may be followed by an optional label
-for the field. If -E is used, the text the user enters into the field
-will be hidden (for password fields).
+for the field.  If the label contains an underscore, the letter following it
+will be underlined and a keyboard shortcut will be created (only with
+GTK+2.0).  If -E is used, the text the user enters into the field will be
+hidden (for password fields).
 
 .IP -c/-C 
-Adds a checkbox to the window using the given label. If -C is used, the
-checkbox is checked by default, if -c is used it is unchecked. The status of
-the checkbox is returned on standard out as 'TRUE' or 'FALSE'.
+Adds a checkbox to the window using the given label. If the label contains
+an underscore, the letter following it will be underlined and a keyboard
+shortcut will be created (only with GTK+2.0). If -C is used, the checkbox is
+checked by default, if -c is used it is unchecked. The status of the
+checkbox is returned on standard out as 'TRUE' or 'FALSE'.
 
-.IP -m
+.IP -m 
 Adds a pop-up menu to the requester. This option requires at least two
-arguments. The first one will be used as the label for the menu. The following
+arguments. The first one will be used as the label for the menu. If the
+label contains an underscore, the letter following it will be underlined and
+a keyboard shortcut will be created (only with GTK+2.0).  The following
 arguments will be the different menu items. A menu item may not start with a
 '-' character.
 
@@ -71,7 +77,7 @@ can't allocate enough memory it sets the return value to 3.
 	system=`greq -m "Select an item" "Linux" "Free BSD"`
 
 .SH AUTHOR 
-Felix Braun <fbraun@atdot.org>
+Felix Braun <Hazzl@developer.berlios.de>
 
 .I GReq
 was inspired by

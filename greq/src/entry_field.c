@@ -20,9 +20,15 @@ void create_entry_field(gchar *text, gboolean hidden)
    if(text) {
       box = gtk_hbox_new(FALSE, 1);
       if (!box)	quit (RETURN_ERROR_NOMEM);
+#if GTK_MAJOR_VERSION < 2
       label = gtk_label_new(text);
       if (!label) quit (RETURN_ERROR_NOMEM);
-      
+#else
+      label = gtk_label_new_with_mnemonic(text);
+      if (!label) quit (RETURN_ERROR_NOMEM);
+      gtk_label_set_mnemonic_widget((GtkLabel *)label, entry);
+#endif
+
       gtk_box_pack_start((GtkBox *)box, label, FALSE, TRUE, 0);
       gtk_box_pack_end((GtkBox *)box, entry, FALSE, TRUE, 0);
       add_to_vbox(box);

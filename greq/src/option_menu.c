@@ -17,10 +17,19 @@ int create_option_menu(int optind, char *optarg, char *argv[])
       argv[--optind] = "-?";
       return(optind);
    }
-   
+
+   button = gtk_option_menu_new();
+   if (!button) quit (RETURN_ERROR_NOMEM);
+
+#if GTK_MAJOR_VERSION < 2
    label = gtk_label_new(optarg);
    if (!label) quit (RETURN_ERROR_NOMEM);
-   
+#else
+   label = gtk_label_new_with_mnemonic(optarg);
+   if (!label) quit (RETURN_ERROR_NOMEM);
+   gtk_label_set_mnemonic_widget((GtkLabel *)label, button);
+#endif
+
    menu = gtk_menu_new();
    if (!menu) quit (RETURN_ERROR_NOMEM);
    
@@ -33,8 +42,6 @@ int create_option_menu(int optind, char *optarg, char *argv[])
       gtk_widget_show_all(menu);
    } while(argv[optind] && (*argv[optind] != '-'));
    
-   button = gtk_option_menu_new();
-   if (!button) quit (RETURN_ERROR_NOMEM);
    gtk_option_menu_set_menu((GtkOptionMenu *)button, menu);
    gtk_signal_connect ((GtkObject*)button, key_press_event,
 		       GTK_SIGNAL_FUNC (keypress_cb), NULL);

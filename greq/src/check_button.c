@@ -9,10 +9,14 @@
 void create_check_button(gchar *label, gboolean toggled)
 {
    GtkWidget *w;
-   
+
+#if GTK_MAJOR_VERSION < 2
    w = gtk_check_button_new_with_label (label);
-   if (!w)
-     quit (RETURN_ERROR_NOMEM);
+#else
+   w = gtk_check_button_new_with_mnemonic (label);
+#endif
+   if (!w) quit (RETURN_ERROR_NOMEM);
+
    gtk_toggle_button_set_active((GtkToggleButton *)w, toggled);
    add_to_vbox(w);  
    widgets = g_slist_append (widgets, w);
