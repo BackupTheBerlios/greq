@@ -1,81 +1,81 @@
-.\"
-.\" Written by Rasca Gmelch, Berlin 1997, 1998
-.\" Published under the GNU GPL V2
-.\" Modified by Felix Braun, Berlin 2001
-.\"
-.TH GREQ 1x "21/Jul/2001" "" "Version 0.4"
+.TH GREQ 1x "16/Mar/2002" "" "GReq Manual Page"
 .SH NAME
-greq - Gtk-based shell tool
+GReq \- build GTK+-requesters from shell scripts
 .SH SYNOPSIS
-.BI "greq [-h?v] [-t "<window_title> "] [-l "<label> "] [(-c | -C) "<checkbox_label> "] [-d "<default_entry> " | -b | [-m] "<list>* "]
+.BI "greq -h | -?"
+
+.BI "greq [-t "<window\ title> "] [-p "<text\ prompt> "] [-(e | E) ["<entry\ label> "] [-d "<default\ value> "]] [(-c | -C) "<checkbox\ label> "] [-m "<menu\ label>\ <menu\ item>... "] [-o "<OK\ label> "] [-a ["<abort\ label> "]]
 
 .SH DESCRIPTION
-GReq is a program that lets you create GTK+ dialogs from within shell
+.I GReq 
+is a program that lets you create GTK+ dialogs from within shell
 scripts. If you are writing a shell script that needs input from a user that
 would have trouble handling a command line interface, this tool may be what
 you are looking for.
 
-GReq has three basic modes of operation: (1)text entry, (2)boolean and
-(3)list mode. These allow the user to (1)enter a text string, (2)choose yes
-or no, or (3)select one or more of several given choices respectively. 
-
-By default, GReq will run in text entry mode. If one of the options on the
-command line is '-b' it will run in boolean mode instead. If there are one
-or more parameters on the command line that don't start with a '-' GReq will
-run in list mode and these parameters will be the list of values presented
-to the user.
-
 .SH OPTIONS
-.IP -d
-the default for the text choice in text entry mode.
-
-.IP -b
-boolean mode, just ask the user and return 'yes' or nothing.
-
-.IP -m
-allow multiple selections in a list. All selected items
-are written to standard out one per line.
-
-.IP -l
-A string that will be placed before the different entry fields. The default
-is 'Value: '.
+.IP -?/-h
+Give some usage information and then quit.
 
 .IP -t 
-The title of the dialog window. If none is given, the title is decided by
-the window manager.
+The title of the dialog window. If this option is not used, the title of the
+window is decided by the window manager.
+
+.IP -p 
+Adds a paragraph of text to the requester. The text will be broken
+into lines automatically, which will be centered.
+
+.IP -e/E
+Adds a text entry field. This option may be followed by an optional label
+for the field. If -E is used, the text the user enters into the field
+will be hidden (for password fields).
 
 .IP -c/-C 
 Adds a checkbox to the window using the given label. If -C is used, the
 checkbox is checked by default, if -c is used it is unchecked. The status of
 the checkbox is returned on standard out as 'TRUE' or 'FALSE'.
 
-.IP -v
-Print version number of greq to standard out and exit.
+.IP -m
+Adds a pop-up menu to the requester. This option requires at least two
+arguments. The first one will be used as the label for the menu. The following
+arguments will be the different menu items. A menu item may not start with a
+'-' character.
+
+.IP -o 
+The label used for the OK button. If this option is not used, this button
+will be labeled " OK ".
+
+.IP -a
+The label used for the abort button. If the option is not used, this button
+will be labeled " Cancel ". If this option is given but not followed by an 
+argument, the abort button is omitted altogether.
+
 .SH RETURN VALUE
-In text entry mode GReq returns the text entered by the user on standard
-out; in boolean mode, it returns 'yes' or nothing; in list mode it returns
-the choices made by the user one per line. If there was a checkbox, GReq
-additionally returns 'TRUE' or 'FALSE' on a new line, depending on whether
-the checkbox was checked or not when the user pressed OK. If the dialog is
-cancelled, GReq returns nothing on standard out and sets the return status
-to '1'. If there is an unknown option, GReq sets the retrun status to '2'.
+.I GReq
+returns the values of the entry fields separated by '\\v' (0x0B) on
+standard output. If no error occured, the return value is set to 0. If the
+requester is cancelled or the window is closed there is no output, and the 
+return value is set to 1. If there is an error in greq's command line
+options the return value is set to 2. If 
+.I GReq 
+can't allocate enough memory it sets the return value to 3.
 
 .SH EXAMPLES
 
 	#!/bin/sh
 .br
-	val=`greq -l "Number: "`
+	IFS=$'\\v'
+.br       
+	val=`greq -e "Number: "`
 .br
-	system=`greq -l "Select an item" "Linux" "Free BSD"`
+	system=`greq -m "Select an item" "Linux" "Free BSD"`
 
-.SH AUTHOR
-.B Version 0.3 
-by Rasca, thron@gmx.de
-.br
+.SH AUTHOR 
+Felix Braun <fbraun@atdot.org>
+
+.I GReq
+was inspired by
+.I XAsk
+which was written by Rasca <thron@gmx.de> and is available on 
 http://home.pages.de/~rasca/
-.br
-.B Version 0.4
-by Felix Braun <fbraun@atdot.org>
-.br
-GReq is published under the GNU General Public License
-
+.br 
