@@ -1,0 +1,81 @@
+.\"
+.\" Written by Rasca Gmelch, Berlin 1997, 1998
+.\" Published under the GNU GPL V2
+.\" Modified by Felix Braun, Berlin 2001
+.\"
+.TH GREQ 1x "21/Jul/2001" "" "Version 0.4"
+.SH NAME
+greq - Gtk-based shell tool
+.SH SYNOPSIS
+.BI "greq [-h?v] [-t "<window_title> "] [-l "<label> "] [(-c | -C) "<checkbox_label> "] [-d "<default_entry> " | -b | [-m] "<list>* "]
+
+.SH DESCRIPTION
+GReq is a program that lets you create GTK+ dialogs from within shell
+scripts. If you are writing a shell script that needs input from a user that
+would have trouble handling a command line interface, this tool may be what
+you are looking for.
+
+GReq has three basic modes of operation: (1)text entry, (2)boolean and
+(3)list mode. These allow the user to (1)enter a text string, (2)choose yes
+or no, or (3)select one or more of several given choices respectively. 
+
+By default, GReq will run in text entry mode. If one of the options on the
+command line is '-b' it will run in boolean mode instead. If there are one
+or more parameters on the command line that don't start with a '-' GReq will
+run in list mode and these parameters will be the list of values presented
+to the user.
+
+.SH OPTIONS
+.IP -d
+the default for the text choice in text entry mode.
+
+.IP -b
+boolean mode, just ask the user and return 'yes' or nothing.
+
+.IP -m
+allow multiple selections in a list. All selected items
+are written to standard out one per line.
+
+.IP -l
+A string that will be placed before the different entry fields. The default
+is 'Value: '.
+
+.IP -t 
+The title of the dialog window. If none is given, the title is decided by
+the window manager.
+
+.IP -c/-C 
+Adds a checkbox to the window using the given label. If -C is used, the
+checkbox is checked by default, if -c is used it is unchecked. The status of
+the checkbox is returned on standard out as 'TRUE' or 'FALSE'.
+
+.IP -v
+Print version number of greq to standard out and exit.
+.SH RETURN VALUE
+In text entry mode GReq returns the text entered by the user on standard
+out; in boolean mode, it returns 'yes' or nothing; in list mode it returns
+the choices made by the user one per line. If there was a checkbox, GReq
+additionally returns 'TRUE' or 'FALSE' on a new line, depending on whether
+the checkbox was checked or not when the user pressed OK. If the dialog is
+cancelled, GReq returns nothing on standard out and sets the return status
+to '1'. If there is an unknown option, GReq sets the retrun status to '2'.
+
+.SH EXAMPLES
+
+	#!/bin/sh
+.br
+	val=`greq -l "Number: "`
+.br
+	system=`greq -l "Select an item" "Linux" "Free BSD"`
+
+.SH AUTHOR
+.B Version 0.3 
+by Rasca, thron@gmx.de
+.br
+http://home.pages.de/~rasca/
+.br
+.B Version 0.4
+by Felix Braun <fbraun@atdot.org>
+.br
+GReq is published under the GNU General Public License
+

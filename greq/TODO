@@ -1,0 +1,5 @@
+- long option names
+- Default Focus
+- CList widget where the user can pick multiple options
+- problem with returning the empty string in a requester with more than one
+  text entry field.
