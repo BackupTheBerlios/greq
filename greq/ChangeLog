@@ -1,3 +1,30 @@
+2002-04-19 19:37  Hazzl
+
+	* NEWS, README, TODO, autogen.sh, ac/missing/glib-2.0.m4,
+	ac/missing/gtk-2.0.m4: Added detection for GTK+ 2.0
+
+2002-04-19 19:33  Hazzl
+
+	* INSTALL: Updated documentation
+
+2002-04-19 19:32  Hazzl
+
+	* configure.in: Added check for GTK+ 2.0
+
+2002-03-25 22:32  Hazzl
+
+	* src/: Makefile.am, local_options.mk: Added rule for assembly
+	files, GTK options
+
+2002-03-20 19:26  Hazzl
+
+	* Makefile.am, autogen.sh: include manual page into the
+	distribution
+
+2002-03-16 19:07  Hazzl
+
+	* ChangeLog, configure.in: Release Version 0.9.2
+
 2002-03-16 19:06  Hazzl
 
 	* Demo, NEWS, src/check_button.c, src/entry_field.c, src/greq.h,
