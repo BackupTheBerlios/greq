@@ -1,3 +1,29 @@
+2002-04-30 15:02  Hazzl
+
+	* src/greq.c: Changed e-mail address
+
+2002-04-29 18:46  Hazzl
+
+	* configure.in: new revision
+
+2002-04-29 18:45  Hazzl
+
+	* NEWS, greq.man, src/check_button.c, src/entry_field.c,
+	src/option_menu.c: added mnemonics for GTK+ 2.0
+
+2002-04-29 18:42  Hazzl
+
+	* greq.spec.in: corrected e-mail address
+
+2002-04-19 20:49  Hazzl
+
+	* src/greq.c: GTK+ 2.0 handles the input focus correctly, so we
+	don't need to set explicitly
+
+2002-04-19 19:58  Hazzl
+
+	* ChangeLog: Update ChangeLog
+
 2002-04-19 19:37  Hazzl
 
 	* NEWS, README, TODO, autogen.sh, ac/missing/glib-2.0.m4,
