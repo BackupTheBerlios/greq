@@ -28,5 +28,4 @@ inline void output_check_button(GtkWidget *w)
       out="FALSE";
    }
    fputs(out, stdout);
-   putchar(FIELD_SEPARATOR);
 }

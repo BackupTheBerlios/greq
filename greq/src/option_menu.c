@@ -62,6 +62,5 @@ void output_option_menu(GtkWidget *om)
    if (c) {
       gtk_label_get((GtkLabel *)c, &text);
       fputs(text, stdout);
-      putchar(FIELD_SEPARATOR);
    }
 }

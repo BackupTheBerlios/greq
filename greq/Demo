@@ -5,7 +5,7 @@ if [ -z $GREQ ]; then
   echo "Couldn't find the greq executable. Maybe you should make it first?"
   exit 1
 fi
-IFS=$'\a'		# fields are separated by CTRL-G
+IFS=$'\v'		# fields are separated by CTRL-L
 $GREQ -t"greq Demo" -p 'Welcome to greq!' \
        -p "greq lets you build simple graphical dialogs from within shell scripts."\
        -p "We're now going to see a few examples of what is possible." \
@@ -46,12 +46,12 @@ LINE=(`$GREQ -t "A More Complex Example" -p"Establish Internet Connection?" \
 if [ $PIPESTATUS -eq 1 ]; then
   echo "You cancelled the dialog."
 else
-  if [ -z ${LINE[0] ]; then
+  if [ -z ${LINE[0]} ]; then
     echo "You didn't enter a user name."
   else
     echo The username was: ${LINE[0]}
   fi
-  if [ -z ${LINE[1] ]; then
+  if [ -z ${LINE[1]} ]; then
     echo "You forgot the password."
   else
     echo You gave this password: ${LINE[1]}

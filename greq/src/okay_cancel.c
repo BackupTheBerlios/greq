@@ -3,6 +3,7 @@
  */
 
 #include <gtk/gtk.h>
+#include <stdio.h> /* for putchar() */
 #include "greq.h"
 
 void ok_cb (GtkWidget *w, void *v)
@@ -22,6 +23,10 @@ void ok_cb (GtkWidget *w, void *v)
 	output_check_button(widget);
       if (type == gtk_option_menu_get_type())
 	output_option_menu(widget);
+      
+      /* if there are more widgets with output values, separate them */
+      if (current)
+	putchar ('\v');
    }
    quit(RETURN_OK);
 }
