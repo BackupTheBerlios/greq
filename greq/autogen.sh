@@ -1,6 +1,5 @@
 #! /bin/sh
-
-aclocal && \
+aclocal -I ./ac && \
 automake --add-missing && \
 autoconf && \
-./configure
+echo "configure script generated. You may run it with ./configure"

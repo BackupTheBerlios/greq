@@ -1,3 +1,5 @@
+0.9.3
+     Added detection of GTK+ 2.0
 0.9.2
      Oops! I decided to change the IFS again because '\a' is an audible bell
      which is probably unexpected if output. The IFS now is '\v'. Another
