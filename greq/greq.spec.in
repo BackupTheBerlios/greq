@@ -11,7 +11,7 @@ Copyright: GPL
 Group:     Applications/X11
 Source:    @PACKAGE@-%{PACKAGE_VERSION}.tar.bz2
 BuildRoot: /tmp/@PACKAGE@-%{PACKAGE_VERSION}-root
-Packager:  Felix Braun <fbraun@atdot.org>
+Packager:  Felix Braun <Hazzl@developer.berlios.de>
 
 %description
 A program that lets you build GTK+-dialogs from within a shell script. This
