@@ -1,3 +1,25 @@
+2002-03-16 19:06  Hazzl
+
+	* Demo, NEWS, src/check_button.c, src/entry_field.c, src/greq.h,
+	src/okay_cancel.c, src/option_menu.c: Changed IFS from '\a' to '\v'
+
+2002-03-16 19:05  Hazzl
+
+	* TODO: Added GTK+ v2.0
+
+2002-03-16 19:04  Hazzl
+
+	* src/: greq.c, version.h.in: Added version information to usage
+	output
+
+2002-03-16 19:02  Hazzl
+
+	* greq.man: Updated manual
+
+2002-03-14 22:32  Hazzl
+
+	* ChangeLog, ChangeLog: [no log message]
+
 2002-03-14 22:30  Hazzl
 
 	* NEWS, TODO: release 0.9.1
