@@ -2,7 +2,7 @@
  * greq.c
  *
  * Copyright (C) 2001, Felix Braun, Berlin
- * EMail: fbraun@atdot.org
+ * EMail: Hazzl@developer.berlios.de
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
